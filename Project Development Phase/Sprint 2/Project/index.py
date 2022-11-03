@@ -61,7 +61,7 @@ def deleteInchargeData(conn,email):
     print('Number of affected rows : ', ibm_db.num_rows(out), "\n")
 
 try:
-    conn=ibm_db.connect("DATABASE=;HOSTNAME=;PORT=;SECURITY=SSL;SSLServerCertificate=;PROTOCOL=TCPIP;UID=;PWD=;", "", "")
+    conn=ibm_db.connect("DATABASE=;HOSTNAME=;PORT=;SECURITY=SSL;SSLServerCertificate=DigiCertGlobalRootCA.crt;PROTOCOL=TCPIP;UID=;PWD=;", "", "")
     print("Db connected")
 except:
     print("Error")
