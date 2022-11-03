@@ -70,8 +70,8 @@ app=Flask(__name__)
 app.config['SECRET_KEY']='-RFins9nLKTN-FHawdrPAQ'
 app.config['MAIL_SERVER']='smtp.gmail.com'  
 app.config['MAIL_PORT']=465  
-app.config['MAIL_USERNAME'] = 'gowrishankarj1110@gmail.com'  
-app.config['MAIL_PASSWORD'] = 'bfylpfroomoghhxi'  
+app.config['MAIL_USERNAME'] = ''  
+app.config['MAIL_PASSWORD'] = ''  
 app.config['MAIL_USE_TLS'] = False  
 app.config['MAIL_USE_SSL'] = True  
 mail = Mail(app)  
@@ -148,7 +148,7 @@ def recipientregister():
 
 @app.route("/inchargeauthentication/<email>",methods=['GET','POST'])
 def inchargeauthentication(email):
-    msg = Message('OTP',sender = 'gowrishankarj1110@gmail.com', recipients = [email])  
+    msg = Message('OTP',sender = '', recipients = [email])  
     msg.body = str(otp)  
     mail.send(msg)
     return render_template('inchargeauthentication.html',email=email) 
@@ -166,7 +166,7 @@ def inchargevalidate():
 
 @app.route("/recipientauthentication/<email>",methods=['GET','POST'])
 def recipientauthentication(email):
-    msg = Message('OTP',sender = 'gowrishankarj1110@gmail.com', recipients = [email])  
+    msg = Message('OTP',sender = '', recipients = [email])  
     msg.body = str(otp)  
     mail.send(msg)
     return render_template('recipientauthentication.html',email=email) 
@@ -184,7 +184,7 @@ def recipientvalidate():
 
 @app.route("/donorauthentication/<email>",methods=['GET','POST'])
 def donorauthentication(email,username):
-    msg = Message('OTP',sender = 'gowrishankarj1110@gmail.com', recipients = [email])  
+    msg = Message('OTP',sender = '', recipients = [email])  
     msg.body = str(otp)  
     mail.send(msg)
     return render_template('donorauthentication.html',email=email,username=username) 
