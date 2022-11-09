@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Incharge Home</title>
+</head>
+<body>
+    You are signed-in using this email {{email}} 
+    <a href={{ url_for('inchargelogout') }}><button>Log Out</button></a>
+    <br><br>    
+    Enter donor details:
+    <br><br>
+    <form action="/inchargedonor" method="POST">
+        <label for="email">Email</label>
+        <input type="email" name="email"><br><br>
+        <label for="donated">Donated</label>
+        <select name="donated" id="donated">
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+        </select><br><br>
+        <button type="submit">Submit</button>
+    </form>
+    <br><br>    
+    Enter recipient details:
+    <br><br> 
+    <form action="/inchargerecipient" method="POST">
+        <label for="name">Name of the Recipient</label>
+        <input type="name" name="name"><br><br>
+        <label for="emailreceiver">Email of the blood Receiver</label>
+        <input type="emailreceiver" name="emailreceiver"><br><br>
+        <label for="email">Email of the blood donator</label>
+        <input type="email" name="email"><br><br>
+        <label for="donated">Withdrawal of blood succeeded ?</label>
+        <select name="donated" id="donated">
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+        </select><br><br>
+        <label for="hospitalname">Hospital Name</label>
+        <input type="hospitalname" name="hospitalname"><br><br>
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

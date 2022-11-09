@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donor Home</title>
+</head>
+<body>
+    You are signed-in using this email {{email}} 
+    <a href={{ url_for('donorlogout') }}><button>Log Out</button></a>
+
+    Welcome {{firstname}}
+
+    <div class="panel" id="Form">
+        <form action="/donationdetails" method="post">
+            <br><br>
+            <label for="username">Username
+                <input type="text" name="username">
+            </label><br><br>
+            <label for="firstname">Firstname
+                <input type="text" name="firstname">
+            </label><br><br>
+            <label for="email">Email
+                <input type="text" name="email">
+            </label><br><br>
+            <label for="phonenumber">Phone number
+                <input type="text" name="phonenumber">
+            </label><br><br>
+            <label for="district">District
+                <select class="form-control" id="district" name="district">
+                    {% for district in districts %}
+                    <option value="{{district}}">{{district}}</option>
+                    {% endfor %}
+                </select>   
+            </label><br><br>
+            <label for="hospitalname">Hospital name
+                <select name="hospitalname" id="hospitalname"></select>
+            </label><br><br>
+            <label for="donationdate">Donation date
+                <input type="date" name="donationdate">
+            </label><br><br>
+            <label for="blood">Blood Group
+                <input type="text" name="blood">
+            </label><br><br>
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <script type="text/javascript">
+        district_select = document.getElementById('district')
+        hospital_select = document.getElementById('hospitalname')
+        district_select.onchange=function(){
+          district = district_select.value;
+          //alert(district);
+          fetch('/hospitals/'+district).then(function(response){
+            response.json().then(function(data){
+              optionHTML='';
+              for ( hospital of data.districthospital){
+                optionHTML+='<option value="'+hospital+'">'+hospital+'</option>';
+              }
+              for (var i = 0; i < data.districthospital.length; i++) {
+                console.log(data.districthospital[i]);
+              }
+              hospital_select.innerHTML=optionHTML;
+            });
+          });
+        }
+    </script>
+</body>
+</html>

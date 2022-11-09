@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Eligibility Check</title>
+</head>
+<body>
+    You are signed-in using this email {{email}} 
+    <a href={{ url_for('donorlogout') }}><button>Log Out</button></a>
+
+    Welcome {{firstname}}
+
+    <form action="/donorhome" method="post">
+            <br>Are you between the age 16 and 70?<br>
+                <select id="age" name="age">
+                    <option value="">---</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            <br>Are you being weight more than 50 kgs?<br>
+                <select id="weight" name="weight">
+                    <option value="">---</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            <br>Are you being height more than 150 cms?<br>
+                <select id="height" name="height">
+                    <option value="">---</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            <br>Have you ever injected drugs not prescribed by a doctor?<br>
+                <select id="drug" name="drug">
+                    <option value="">---</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            <br>Have you been pregnant or given birth in the last 9 months?<br>
+                <select id="pregnant" name="pregnant">
+                    <option value="">---</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            <br>Have you taken iron medication prescribed by a doctor?<br>
+                <select id="iron" name="iron">
+                    <option value="">---</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            <br>Have you had an endoscopy in the last 4 months?<br>
+                <select id="endoscopy" name="endoscopy">
+                    <option value="">---</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            <br>Have you had a cough, cold, sore throat or influenza in last 28 days?<br>
+                <select id="cough" name="cough">
+                    <option value="">---</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            <br>Have you, or anyone in your household, had diarrhoea or vomiting symptoms in the last 28 days?<br>
+                <select id="vomit" name="vomit">
+                    <option value="">---</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            <br>Have you tested positive for COVID-19 in the last seven days?<br>
+                <select id="covid" name="covid">
+                    <option value="">---</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            <br>Have you taken antibiotics in the last seven days?<br>
+                <select id="antibodies" name="antibodies">
+                    <option value="">---</option>
+                    <option value="yes">Yes</option>
+                    <option value="no">No</option>
+                </select>
+            <br>
+            <br>
+            <button type="submit">Check</button>
+    </form>
+    
+</body>
+</html>
