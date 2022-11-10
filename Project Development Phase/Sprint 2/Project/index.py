@@ -67,7 +67,7 @@ except:
     print("Error")
 
 app=Flask(__name__)
-app.config['SECRET_KEY']='-RFins9nLKTN-FHawdrPAQ'
+app.config['SECRET_KEY']=''
 app.config['MAIL_SERVER']='smtp.gmail.com'  
 app.config['MAIL_PORT']=465  
 app.config['MAIL_USERNAME'] = ''  
