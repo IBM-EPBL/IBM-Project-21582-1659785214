@@ -5,7 +5,7 @@ import ibm_db
 import os
 
 try:
-    conn=ibm_db.connect("DATABASE=bludb;HOSTNAME=0c77d6f2-5da9-48a9-81f8-86b520b87518.bs2io90l08kqb1od8lcg.databases.appdomain.cloud;PORT=31198;SECURITY=SSL;SSLServerCertificate=DigiCertGlobalRootCA.crt;PROTOCOL=TCPIP;UID=bjn03696;PWD=ef96tLJX2VjzaCPX;", "", "")
+    conn=ibm_db.connect("DATABASE=;HOSTNAME=;PORT=;SECURITY=SSL;SSLServerCertificate=DigiCertGlobalRootCA.crt;PROTOCOL=TCPIP;UID=;PWD=;", "", "")
     print("Db connected")
 except:
     print("Error")
@@ -71,8 +71,8 @@ app=Flask(__name__)
 app.config['SECRET_KEY']='-RFins9nLKTN-FHawdrPAQ'
 app.config['MAIL_SERVER']='smtp.gmail.com'  
 app.config['MAIL_PORT']=465  
-app.config['MAIL_USERNAME'] = 'gowrishankarj1110@gmail.com'  
-app.config['MAIL_PASSWORD'] = 'lzwzepnteyvcfibb'  # to be get changed 
+app.config['MAIL_USERNAME'] = ''  
+app.config['MAIL_PASSWORD'] = ''  # to be get changed 
 app.config['MAIL_USE_TLS'] = False  
 app.config['MAIL_USE_SSL'] = True  
 mail = Mail(app)  
@@ -148,7 +148,7 @@ def recipientregister():
 
 @app.route("/inchargeauthentication/<email>",methods=['GET','POST'])
 def inchargeauthentication(email):
-    msg = Message('OTP',sender = 'gowrishankarj1110@gmail.com', recipients = [email])  
+    msg = Message('OTP',sender = '', recipients = [email])  
     msg.body = str(otp)  
     mail.send(msg)
     return render_template('inchargeauthentication.html',email=email) 
@@ -166,7 +166,7 @@ def inchargevalidate():
 
 @app.route("/recipientauthentication/<email>",methods=['GET','POST'])
 def recipientauthentication(email):
-    msg = Message('OTP',sender = 'gowrishankarj1110@gmail.com', recipients = [email])  
+    msg = Message('OTP',sender = '', recipients = [email])  
     msg.body = str(otp)  
     mail.send(msg)
     return render_template('recipientauthentication.html',email=email) 
@@ -184,7 +184,7 @@ def recipientvalidate():
 
 @app.route("/donorauthentication/<email>",methods=['GET','POST'])
 def donorauthentication(email):
-    msg = Message('OTP',sender = 'gowrishankarj1110@gmail.com', recipients = [email])  
+    msg = Message('OTP',sender = '', recipients = [email])  
     msg.body = str(otp)  
     mail.send(msg)
     return render_template('donorauthentication.html',email=email) 
@@ -388,10 +388,10 @@ def donationdetails():
         stmt = ibm_db.exec_immediate(conn,query)  # do the task
         while ibm_db.fetch_row(stmt)!=False: #to store the db data
             hospitalemail=(ibm_db.result(stmt,0))
-        msg = Message('Info',sender = 'gowrishankarj1110@gmail.com', recipients = [hospitalemail])  
+        msg = Message('Info',sender = '', recipients = [hospitalemail])  
         msg.body = send
         mail.send(msg)
-        msg = Message('Info',sender = 'gowrishankarj1110@gmail.com', recipients = [email])  
+        msg = Message('Info',sender = '', recipients = [email])  
         msg.body = send
         mail.send(msg)
         return render_template('donorstatus.html',donated=donated,email=session['donoremail'],firstname=firstname,msg=send)
@@ -422,7 +422,7 @@ def recipienthome():
                 while ibm_db.fetch_row(stmt)!=False: #to store the db data
                     hospitalemail=(ibm_db.result(stmt,0))
                 send="{} have applied for requesting blood on tomorrow in {}, {}.".format(recipientname,hospital,district)
-                msg = Message('Info',sender = 'gowrishankarj1110@gmail.com', recipients = [hospitalemail])  
+                msg = Message('Info',sender = '', recipients = [hospitalemail])  
                 msg.body = send
                 mail.send(msg)
                 msg1='You need get it tomorrow.'
@@ -473,7 +473,7 @@ def inchargedonor():
                 while ibm_db.fetch_row(stmt)!=False: #to store the db data
                     firstname=(ibm_db.result(stmt,0))
                 send="{} have finished the donation".format(firstname)
-                msg = Message('Info',sender = 'gowrishankarj1110@gmail.com', recipients = [email])  
+                msg = Message('Info',sender = '', recipients = [email])  
                 msg.body = send
                 mail.send(msg)
                 return render_template('inchargehome.html',email=session['inchargeemail'])
@@ -492,7 +492,7 @@ def inchargerecipient():
                 stmt = ibm_db.exec_immediate(conn,query)
                 receiveremail=request.form['emailreceiver']
                 send="You have finished the Receiving the blood"
-                msg = Message('Info',sender = 'gowrishankarj1110@gmail.com', recipients = [receiveremail])  
+                msg = Message('Info',sender = '', recipients = [receiveremail])  
                 msg.body = send
                 mail.send(msg)
                 query="delete from recipientrequested where email='{}';".format(receiveremail)
