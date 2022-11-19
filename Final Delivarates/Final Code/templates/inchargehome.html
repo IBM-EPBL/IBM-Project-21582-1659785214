@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Incharge Home</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <style>
+        body{
+            background-color: #DDDDDD;
+        }
+        .colormine{
+            color: white;
+        }
+        .bold{
+            font-weight: bold;
+        }
+        .center {
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+        form{
+            width: 30%;
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark">
+        <a class="navbar-brand" href="#"><span class="colormine bold">Incharge Home</span></a>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                <a class="nav-link" href="#"> <span class="sr-only">(current)</span></a>
+                </li>
+            </ul>
+          <a class="form-inline my-2 my-lg-0" href="{{ url_for('inchargelogout') }}"><button class="bg-light btn">Log Out</button></a>
+        </div>
+    </nav>
+
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <h4 class="display-6">You are signed-in using this email {{email}}. </h4><br><h4>You can fill the following form one by one, 1st one for Donor's Acceptance of Blood, 2nd one will be Recipient's Withdrawal of Blood</h4>
+          <br><h4>Not necessary to fill both two forms at same time</h4>
+          <br>
+        </div>
+    </div>
+
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <h1 class="display-4">Enter donor details for Donor's Acceptance of Blood</h1>
+        </div>
+    </div>
+    <br><br>
+    <form action="/inchargedonor" method="POST" class="center" >
+        <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" name="email">
+        </div>
+        <div class="form-group">
+            <label for="donated">Donated</label>
+            <select name="donated" class="form-control" id="donated">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </div>
+        <button type="submit" class="bg-dark btn colormine">Submit</button>
+    </form>
+    <br><br>    
+    <br><br><br><br><br><br><br><br><br><br><br>
+    
+    <div class="jumbotron jumbotron-fluid">
+        <div class="container">
+          <h1 class="display-4">Enter recipient details for Recipient's Withdrawal of Blood</h1>
+        </div>
+    </div>
+    <br><br> 
+    <form action="/inchargerecipient" method="POST" class="center">
+        <div class="form-group">
+            <label for="name">Name of the Recipient</label>
+            <input type="name" class="form-control" name="name">
+        </div>
+        <div class="form-group">
+            <label for="emailreceiver">Email of the blood Receiver</label>
+            <input type="emailreceiver" class="form-control" name="emailreceiver">
+        </div>
+        <div class="form-group">
+            <label for="email">Email of the blood donator</label>
+            <input type="email" class="form-control" name="email">
+        </div>
+        <div class="form-group">
+            <label for="donated">Withdrawal of blood succeeded ?</label>
+            <select name="donated" class="form-control" id="donated">
+                <option value="yes">Yes</option>
+                <option value="no">No</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="hospitalname">Hospital Name</label>
+            <input type="hospitalname" class="form-control" name="hospitalname">
+        </div>
+        <button type="submit" class="bg-dark btn colormine">Submit</button>
+        <br><br><br><br><br><br><br><br><br><br><br>
+    </form>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
